@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'r/place Clone',
-  description: 'A real-time pixel canvas built with Next.js and Firebase',
+  title: 'Pixel Canvas',
+  description: 'A real-time pixel canvas built with Next.js',
 };
 
 export default function RootLayout({
@@ -24,13 +24,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // 2. The HTML structure
     <html lang="en">
-      <body>
+      <body className="main">
         <AppProviders>
           {children}
         </AppProviders>
-        
       </body>
     </html>
   );
