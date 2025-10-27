@@ -14,3 +14,7 @@
   height: 10px;
   cursor: pointer;
 }
+
+.pixel-cell:hover{
+  opacity: 0.5;
+}

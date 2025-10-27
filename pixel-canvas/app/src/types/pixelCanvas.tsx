@@ -11,7 +11,8 @@ export function PixelCanvas({ canvasData, onPixelPlace}: PixelCanvasProps) {
                 {Array.from({ length: CANVAS_SIZE }).map((_, x) => (
                     <div key={x} className="canvas-row">
                         {Array.from({ length: CANVAS_SIZE }).map((_, y) => {
-                            const pixelColor = canvasData[x]?.[y] || '#333333';
+                            const pixelData = canvasData[x]?.[y];
+                            const pixelColor: string = pixelData?.color || '#444444';
 
                             // Return the pixel element (The JSX)
                             return (
@@ -20,7 +21,7 @@ export function PixelCanvas({ canvasData, onPixelPlace}: PixelCanvasProps) {
                                     className="pixel-cell"
                                     style={{ backgroundColor: pixelColor }}
 
-                                    onClick={() => onPixelPlace(x, y, currentColor)}
+                                    onClick={() => onPixelPlace(x, y)}
                                 />
                             );
                         })}

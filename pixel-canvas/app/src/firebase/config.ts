@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
+import { getAuth } from "firebase/auth";
+
 
 // 2. Define the configuration object using environment variables
 const firebaseConfig = {
@@ -15,11 +17,9 @@ const firebaseConfig = {
     // Example: "https://rplace-clone-app-default-rtdb.firebaseio.com"
 };
 
-// 3. Initialize Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// 4. Initialize and EXPORT the Realtime Database service
 export const db = getDatabase(app); 
 
-// You can also export the app instance, though db is your primary focus now
-export { app };
+export const auth = getAuth(app);
