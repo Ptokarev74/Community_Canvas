@@ -83,15 +83,26 @@ export default function CanvasPage() {
 
   return (
     <main style={{ padding: 20 }}>
-        <h1>r/place Clone</h1>
-        <p>You are logged in as: **{user.email}**</p>
+        {/* <h1>r/place Clone</h1> */}
+        {/* <p>You are logged in as: **{user.email}**</p> */}
         
         {/* You should also add a Sign Out button now! */}
-        <button onClick={() => auth.signOut()}>Sign Out</button> 
+        {/* <button onClick={() => auth.signOut()}>Sign Out</button>  */}
         
         {/* ... other color controls ... */}
 
-        <div style={{ marginTop: 20 }}>
+        <div style={{ 
+          flexGrow: 1, 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            backgroundColor: '#f0f0f0',
+            position: 'relative',
+            overflow: 'hidden',
+            border: '4px solid #333',
+            borderRadius: '25px',
+            boxShadow: '0 10px 20px rgba(0,0,0,0.3), inset 0 0 10px rgba(0,0,0,0.2)',
+          }}>
             <PixelCanvas 
                 canvasData={canvasData} 
                 onPixelPlace={onPixelPlace} 

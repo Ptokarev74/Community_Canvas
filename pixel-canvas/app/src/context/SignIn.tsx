@@ -2,6 +2,7 @@
 
 'use client';
 
+
 import React, { useState } from 'react';
 // Import the Firebase Auth service initialized in your config file
 import { auth } from '../firebase/config'; 
@@ -81,6 +82,7 @@ export function SignIn() {
             flexDirection: 'column',
             alignItems: 'center'
         }}>
+            <script src="https://kit.fontawesome.com/0921fa2b1e.js" crossOrigin="anonymous"></script>
             <h1 style={{ textAlign: 'center' }}>Sign In</h1>
             <p style={{ textAlign: 'center', marginBottom: 20 }}>Please sign in to view and place pixels.</p>
             
@@ -93,7 +95,7 @@ export function SignIn() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{ 
-                    width: '100%', 
+                    width: '95%', 
                     padding: 10, 
                     margin: '10px 0', 
                 }}/>
@@ -102,8 +104,11 @@ export function SignIn() {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ width: '100%', padding: 10, margin: '10px 0' }}
-            />
+                style={{ 
+                    width: '95%', 
+                    padding: 10, 
+                    margin: '10px 0' 
+                }}/>
             <div style = {{
                 display: 'flex',
                 flexDirection: 'row',
