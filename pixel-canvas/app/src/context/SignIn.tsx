@@ -67,18 +67,19 @@ export function SignIn() {
 
     // 3. Component UI (Return statement will go here)
     return (
-        
-
         <div style={{ 
-        maxWidth: 400, 
-        margin: '10% auto', 
-        padding: 20, 
-        border: '1px solid rgba(255, 255, 255, 0.3)', 
-        borderRadius: '5px', 
-        backgroundColor: 'white',
-        backdropFilter: 'blur(10px)',
-        boxShadow: '0 0 1px 1px rgba(0, 0, 0, 0.11)',
-        color: 'black'
+            maxWidth: 400, 
+            margin: '10% auto', 
+            padding: 20, 
+            border: '1px solid rgba(255, 255, 255, 0.3)', 
+            borderRadius: '5px', 
+            backgroundColor: 'white',
+            backdropFilter: 'blur(10px)',
+            boxShadow: '0 0 1px 1px rgba(0, 0, 0, 0.11)',
+            color: 'black',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
         }}>
             <h1 style={{ textAlign: 'center' }}>Sign In</h1>
             <p style={{ textAlign: 'center', marginBottom: 20 }}>Please sign in to view and place pixels.</p>
@@ -91,8 +92,11 @@ export function SignIn() {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{ width: '80%', padding: 10, margin: '10px 0' }}
-            />
+                style={{ 
+                    width: '100%', 
+                    padding: 10, 
+                    margin: '10px 0', 
+                }}/>
             <input
                 type="password"
                 placeholder="Password"
@@ -100,21 +104,33 @@ export function SignIn() {
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ width: '100%', padding: 10, margin: '10px 0' }}
             />
-            
-            <button 
-                onClick={handleSignIn}
-                style={{ padding: 10, marginRight: 10, cursor: 'pointer' }}
-            >
-                Sign In
-            </button>
-            
-            <button 
-                onClick={handleSignUp}
-                style={{ padding: 10, cursor: 'pointer' }}
-            >
-                Sign Up
-            </button>
-
+            <div style = {{
+                display: 'flex',
+                flexDirection: 'row',
+                width: '100%', 
+                margin: '10px 0', 
+            }}>
+                <button 
+                    onClick={handleSignIn}
+                    style={{
+                        padding: 10, 
+                        marginRight: 10, 
+                        cursor: 'pointer',
+                        flexGrow: 1 
+                    }}>
+                    Sign In
+                </button>
+                
+                <button 
+                    onClick={handleSignUp}
+                    style={{ 
+                        padding: 10, 
+                        cursor: 'pointer',
+                        flexGrow: 1 
+                    }}>
+                    Sign Up
+                </button>
+            </div>
             <button 
                 onClick={handleGoogleSignIn}
                 style={{ 
