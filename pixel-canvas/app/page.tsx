@@ -14,14 +14,29 @@ import { useAuth } from './src/context/AuthContext';
 // SignIn Functionality
 import { SignIn } from './src/context/SignIn';
 import { LoadingSpinner } from './src/pageComponents/LoadingSpinner';
+import { ZoomControls } from './src/pageComponents/ZoomControls';
+import { ColorPickerComponent } from './src/pageComponents/ColorPickerComponent';
+
 
 // On page load set up everything needed.
 export default function CanvasPage() {
   // The grid we use!
   const [canvasData, setCanvasData] = useState<CanvasGrid>({});
-  const [selectedColor, setSelectedColor] = useState<string>('#ff0000ff');
-
+  const [selectedColor, setSelectedColor] = useState<string>('#000000');
+  // Viewport state to control position and scale
+  const [scale, setScale] = useState(1); // 1 = 100% zoom
+  const [translateX, setTranslateX] = useState(0); // X position for panning
+  const [translateY, setTranslateY] = useState(0); // Y position for panning
   const { user, loading } = useAuth();
+  const handleZoomIn = () => handleZoom(1);
+  const handleZoomOut = () => handleZoom(-1);
+
+  const handleZoom = (direction: 1 | -1) => { // 1 for in, -1 for out
+    const zoomFactor = 0.1;
+    const newScale = scale * (1 + direction * zoomFactor);
+    const clampedScale = Math.max(0.2, Math.min(5, newScale)); // Same limits as wheel zoom
+    setScale(clampedScale);
+};
 
   // On load up...
   useEffect(() => {
@@ -82,7 +97,7 @@ export default function CanvasPage() {
     }
 
   return (
-    <main style={{ padding: 20 }}>
+    <main style={{minHeight: '98vh', maxHeight: '98vh', display: 'flex', flexDirection: 'column'}}>
         {/* <h1>r/place Clone</h1> */}
         {/* <p>You are logged in as: **{user.email}**</p> */}
         
@@ -103,11 +118,28 @@ export default function CanvasPage() {
             borderRadius: '25px',
             boxShadow: '0 10px 20px rgba(0,0,0,0.3), inset 0 0 10px rgba(0,0,0,0.2)',
           }}>
+            <ColorPickerComponent
+              color={selectedColor} 
+              chooseColor={setSelectedColor}
+            />
+
             <PixelCanvas 
                 canvasData={canvasData} 
                 onPixelPlace={onPixelPlace} 
+                scale={scale}
+                translateX={translateX}
+                translateY={translateY}
+                setTranslateX={setTranslateX} 
+                setTranslateY={setTranslateY}
+                setScale={setScale}
+            />
+
+            <ZoomControls 
+            onZoomIn={handleZoomIn} 
+            onZoomOut={handleZoomOut} 
             />
         </div>
+        
     </main>
   );
 }

@@ -16,6 +16,12 @@ export interface CanvasGrid {
 export interface PixelCanvasProps {
     canvasData: CanvasGrid;
     onPixelPlace: (x: number, y: number) => void;
+    scale: number;
+    translateX: number;
+    translateY: number;
+    setTranslateX: (x: number) => void;
+    setTranslateY: (y: number) => void;
+    setScale: (s: number) => void;
 }
 
 export interface PixelData {
@@ -30,5 +36,15 @@ export interface PixelDataToWrite {
     timestamp: {
         '.sv': string; 
     };
+}
+
+export interface ZoomControlsProps {
+    onZoomIn: () => void;
+    onZoomOut: () => void;
+}
+
+export interface ColorPickerProp {
+    color: string;
+    chooseColor: (newColor: string) => void;
 }
 
